@@ -25,7 +25,17 @@ public class SoalItem{
 
 
 	private int selectedRadioButtonId;
+	private int selectedPositionQuestion;
 	private String finalAnswer;
+
+
+	public int getSelectedPositionQuestion() {
+		return selectedPositionQuestion;
+	}
+
+	public void setSelectedPositionQuestion(int selectedPositionQuestion) {
+		this.selectedPositionQuestion = selectedPositionQuestion;
+	}
 
 	public int getSelectedRadioButtonId() {
 		return selectedRadioButtonId;

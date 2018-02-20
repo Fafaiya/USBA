@@ -57,7 +57,6 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
     @Override
     public void onBindViewHolder(final SoalAdapter.SoalViewHolder holder, int position) {
         holder.tvSoal.setText(listSoal.get(position).getSoal());
-
         //memasukan pilihan jawaban di setiap pertanyaan ke dalam ArrayList
         listJawaban = new ArrayList<>();
         listJawaban.add(listSoal.get(position).getAnswerA());
@@ -66,7 +65,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
         listJawaban.add(listSoal.get(position).getAnswerD());
         listJawaban.add(listSoal.get(position).getAnswerE());
 
-        //membuat pilihan jawaban teracal
+        //membuat pilihan jawaban teracak
         Collections.shuffle(listJawaban);
 
         //memasukan pilihan jawaban ke dalam masing2 radiobutton sesuai posisinya
@@ -85,6 +84,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
 
         holder.rgJawaban.setTag(position);
 
+
         holder.rgJawaban.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -93,11 +93,14 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
                     int radioButtonId = group.getCheckedRadioButtonId();
                     //menghindari efek duplikasi kita pakai tag
                     int clickedPos = (Integer) group.getTag();
+
                     listSoal.get(clickedPos).setSelectedRadioButtonId(radioButtonId);
 
+
                     if (radioButtonId > 0) {
-                        RadioButton rb = holder.rgJawaban.findViewById(radioButtonId);
+                        RadioButton rb = group.findViewById(radioButtonId);
                         listSoal.get(clickedPos).setFinalAnswer(rb.getText().toString());
+
                     }
 
                 }
