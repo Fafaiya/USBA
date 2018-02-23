@@ -1,5 +1,6 @@
 package com.sandec.wakhyudi.usba;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sandec.wakhyudi.usba.adapter.SoalAdapter;
@@ -26,19 +28,26 @@ import retrofit2.Callback;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rvMain;
+    TextView tvCountDownTimer;
     List<SoalItem>listSoal = new ArrayList<>();
     List<String>listJawaban = new ArrayList<>();
     List<String>listSoalTerjawab = new ArrayList<>();
     SoalAdapter adapter;
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rvMain = findViewById(R.id.rv_main);
+
         rvMain.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(rvMain);
+
+        pd = new ProgressDialog(this);
+        pd.setMessage("Load data from server");
+        pd.show();
 
         ServiceClient service = ServiceGenerator.createService(ServiceClient.class);
 
@@ -47,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         requestSoal.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                pd.dismiss();
                 listSoal = response.body().getListSoal();
 
                 //dilakukan untuk mengacak soal
@@ -59,12 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
+                pd.dismiss();
                 Toast.makeText(MainActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
-        rvMain.getLayoutManager().scrollToPosition(3);
+        //rvMain.getLayoutManager().scrollToPosition(3);
     }
 
     public void sendAnswer(View view) {

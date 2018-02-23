@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sandec.wakhyudi.usba.R;
 import com.sandec.wakhyudi.usba.model.SoalItem;
 
@@ -40,7 +42,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
         TextView tvSoal;
         RadioGroup rgJawaban;
         RadioButton rbA, rbB, rbC, rbD, rbE;
-
+        ImageView ivSoal;
         public SoalViewHolder(View itemView) {
             super(itemView);
             tvSoal = (TextView) itemView.findViewById(R.id.tv_item_question);
@@ -51,11 +53,21 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
             rbC = (RadioButton) itemView.findViewById(R.id.rb_c);
             rbD = (RadioButton) itemView.findViewById(R.id.rb_d);
             rbE = (RadioButton) itemView.findViewById(R.id.rb_e);
+
+            ivSoal = (ImageView) itemView.findViewById(R.id.iv_item_question);
         }
     }
 
     @Override
     public void onBindViewHolder(final SoalAdapter.SoalViewHolder holder, int position) {
+        if(!(listSoal.get(position).getIdGambar() =="")){
+            holder.ivSoal.setVisibility(View.VISIBLE);
+            String linkGambar = listSoal.get(position).getIdGambar();
+            Glide.with(context).load("https://drive.google.com/thumbnail?id="+linkGambar).into(holder.ivSoal);
+        }else{
+            holder.ivSoal.setVisibility(View.GONE);
+        }
+
         holder.tvSoal.setText(listSoal.get(position).getSoal());
         //memasukan pilihan jawaban di setiap pertanyaan ke dalam ArrayList
         listJawaban = new ArrayList<>();

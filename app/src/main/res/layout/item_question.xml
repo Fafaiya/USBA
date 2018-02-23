@@ -4,6 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_item_question"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
     <TextView
         android:id="@+id/tv_item_question"
         android:paddingLeft="10dp"
