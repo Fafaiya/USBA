@@ -18,14 +18,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="false"
-        app:headerLayout="@layout/nav_header_menu">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_menu_navigation"
+        android:fitsSystemWindows="false">
+        <!--app:headerLayout="@layout/nav_header_menu">-->
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+            <include
+                layout="@layout/nav_header_menu"/>
 
-        </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_menu_navigation"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+            <Button
+                android:id="@+id/btn_kirim_jawaban"
+                android:onClick="kirimJawaban"
+                android:text="Submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
     </android.support.design.widget.NavigationView>
         <!--app:menu="@menu/activity_menu_drawer" />-->
 

@@ -23,6 +23,8 @@ public class SoalItem{
 	@SerializedName("e")
 	private String answerE;
 
+	private String answerN = "none";
+
 	@SerializedName("idGambar")
 	private String idGambar;
 
@@ -78,6 +80,10 @@ public class SoalItem{
 
 	public String getAnswerE() {
 		return answerE;
+	}
+
+	public String getAnswerN() {
+		return answerN;
 	}
 
 	public String getIdGambar() {
