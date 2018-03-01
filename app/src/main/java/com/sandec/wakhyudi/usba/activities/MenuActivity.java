@@ -245,6 +245,10 @@ public class MenuActivity extends AppCompatActivity{
         closeNavigation();
 
         String jawaban;
+        //menghapus field yang tersimpan sebelumnya
+        listSoalTerjawab.clear();
+        listJawaban.clear();
+
         for (int i = 0; i < adapter.getItemCount(); i++) {
             String soal = listSoal.get(i).getSoal();
 
