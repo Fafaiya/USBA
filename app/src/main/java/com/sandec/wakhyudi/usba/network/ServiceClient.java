@@ -25,5 +25,19 @@ public interface ServiceClient {
                                   @Query("soal")List<String> listSoal,
                                   @Query("jawaban")List<String> listJawaban);
 
+  @POST("exec")
+  Call<ResponServer> login(@Query("action")String action,
+                                @Query("sheetName")String sheetName,
+                                @Query("nis")String nis,
+                                @Query("pass")String pass);
+
+  @POST("exec")
+  Call<ResponServer> token(@Query("action")String action,
+                           @Query("sheetName")String sheetName,
+                           @Query("nis")String nis,
+                           @Query("token")String token);
+
+
+
 
 }

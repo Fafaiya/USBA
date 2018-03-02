@@ -68,7 +68,7 @@ public class NoSoalAdapter extends RecyclerView.Adapter<NoSoalAdapter.NoSoalView
 //            }
 //        };
 
-        Preference<Boolean> soal = rxSharedPreferences.getBoolean("soal" +position, false);
+        Preference<Boolean> soal = rxSharedPreferences.getBoolean("soal"+position, false);
 
         soal.asObservable().subscribe(new io.reactivex.Observer<Boolean>() {
             @Override

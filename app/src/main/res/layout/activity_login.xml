@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fdfdfd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sandec.wakhyudi.usba.activities.LoginActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/iv_logo_smk"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity=""
+        android:layout_marginTop="23dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/smk10" />
+
+    <TextView
+        android:id="@+id/tv_nama_sekolah"
+        android:textSize="17sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_logo_smk"
+        android:layout_centerHorizontal="true"
+        android:text="SMKN 10 Semarang" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_nis"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/tv_nama_sekolah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="NIS"
+            android:paddingLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text=":"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_nis"
+            android:inputType="number"
+            android:hint="masukin NIS di sini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/ll_nis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
+        <TextView
+            android:text="Password"
+            android:paddingLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text=":"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_pass"
+            android:inputType="textPassword"
+            android:hint="masukin Password di sini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:onClick="login"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:background="@color/colorPrimary"
+        android:text="login"
+        android:textColor="#fdfdfd" />
+
+
+</RelativeLayout>

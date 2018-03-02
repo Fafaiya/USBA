@@ -126,7 +126,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
                     if (radioButtonId > 0) {
                         RadioButton rb = group.findViewById(radioButtonId);
                         listSoal.get(clickedPos).setFinalAnswer(rb.getText().toString());
-
+                        loadSharedPreferences(clickedPos);
                     }
 
                 }
@@ -135,50 +135,50 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
 
         holder.rgJawaban.check(listSoal.get(position).getSelectedRadioButtonId());
 
-        holder.rbA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                loadSharedPreferences (position);
-
-            }
-        });
-
-        holder.rbB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                loadSharedPreferences (position);
-
-            }
-        });
-
-        holder.rbC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                loadSharedPreferences (position);
-
-            }
-        });
-
-        holder.rbD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                loadSharedPreferences (position);
-
-            }
-        });
-
-        holder.rbE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                loadSharedPreferences (position);
-
-            }
-        });
+//        holder.rbA.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                loadSharedPreferences (position);
+//
+//            }
+//        });
+//
+//        holder.rbB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                loadSharedPreferences (position);
+//
+//            }
+//        });
+//
+//        holder.rbC.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                loadSharedPreferences (position);
+//
+//            }
+//        });
+//
+//        holder.rbD.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                loadSharedPreferences (position);
+//
+//            }
+//        });
+//
+//        holder.rbE.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                loadSharedPreferences (position);
+//
+//            }
+//        });
 
 
     }
