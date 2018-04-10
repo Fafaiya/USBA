@@ -28,6 +28,9 @@ public class SoalItem{
 	@SerializedName("idGambar")
 	private String idGambar;
 
+	@SerializedName("no_soal")
+	private int noSoal;
+
 
 	private int selectedRadioButtonId;
 	private int selectedPositionQuestion;
@@ -88,5 +91,9 @@ public class SoalItem{
 
 	public String getIdGambar() {
 		return idGambar;
+	}
+
+	public int getNoSoal() {
+		return noSoal;
 	}
 }

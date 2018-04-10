@@ -33,6 +33,8 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
     private List<SoalItem> listSoal;
     private Context context;
     List<String> listJawaban;
+    //List<RadioButton>listRadioButton;
+    //RadioButton rbA, rbB, rbC, rbD, rbE;
 
     public SoalAdapter(List<SoalItem> listSoal, Context context) {
         this.listSoal = listSoal;
@@ -41,7 +43,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
 
     @Override
     public SoalAdapter.SoalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.item_question, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_question,parent,false);
         return new SoalViewHolder(v);
     }
 
@@ -63,6 +65,8 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
            // rbN = (RadioButton) itemView.findViewById(R.id.rb_n);
 
             ivSoal = (ImageView) itemView.findViewById(R.id.iv_item_question);
+
+
         }
     }
 
@@ -125,6 +129,26 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.SoalViewHolder
 
                     if (radioButtonId > 0) {
                         RadioButton rb = group.findViewById(radioButtonId);
+//                        String jawaban = "";
+//                        switch (radioButtonId){
+//                            case R.id.rb_a:
+//                                jawaban = "a";
+//                                break;
+//                            case R.id.rb_b:
+//                                jawaban = "b";
+//                                break;
+//                            case R.id.rb_c:
+//                                jawaban = "c";
+//                                break;
+//                            case R.id.rb_d:
+//                                jawaban = "d";
+//                                break;
+//                            case R.id.rb_e:
+//                                jawaban = "e";
+//                                break;
+                        //}
+                        //int noSoal = position+1;
+                        //listSoal.get(clickedPos).setFinalAnswer(jawaban+""+noSoal);
                         listSoal.get(clickedPos).setFinalAnswer(rb.getText().toString());
                         loadSharedPreferences(clickedPos);
                     }

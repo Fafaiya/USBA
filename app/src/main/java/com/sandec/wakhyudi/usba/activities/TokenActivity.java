@@ -19,7 +19,6 @@ import retrofit2.Response;
 
 public class TokenActivity extends AppCompatActivity {
     PinView pvValidasi;
-    Bundle b;
     String nis;
 
     @Override
@@ -27,7 +26,7 @@ public class TokenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_token);
         pvValidasi = (PinView) findViewById(R.id.pv_validasi);
-        b = getIntent().getExtras();
+
     }
 
     public void cekToken(View view) {
@@ -39,7 +38,7 @@ public class TokenActivity extends AppCompatActivity {
         pd.setMessage("Cek Token");
         pd.show();
 
-        nis = b.getString("nis");
+        nis = getSharedPreferences("login",MODE_PRIVATE).getString("nis","");
         String token = pvValidasi.getText().toString();
         ServiceClient service = ServiceGenerator.createService(ServiceClient.class);
 
@@ -53,10 +52,10 @@ public class TokenActivity extends AppCompatActivity {
 
                 switch (hasil) {
                     case "succes":
-                        Bundle c = new Bundle();
-                        c.putString("nis", nis);
+//                        Bundle c = new Bundle();
+//                        c.putString("nis", nis);
                         Intent i = new Intent(TokenActivity.this, MenuActivity.class);
-                        i.putExtras(c);
+//                        i.putExtras(c);
                         startActivity(i);
                         finish();
                         break;
@@ -84,5 +83,10 @@ public class TokenActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
     }
 }

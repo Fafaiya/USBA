@@ -6,7 +6,7 @@ package com.sandec.wakhyudi.usba.model;
 
 public class ResponServer {
 
-    private String hasil;
+    public String hasil;
 
     public String getHasil() {
         return hasil;

@@ -1,10 +1,14 @@
 package com.sandec.wakhyudi.usba.activities;
 
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,11 +27,33 @@ EditText etNis, etPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onAttachedToWindow();
         setContentView(R.layout.activity_login);
+        super.onCreate(savedInstanceState);
+       // getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         etNis = (EditText)findViewById(R.id.et_nis);
         etPass = (EditText)findViewById(R.id.et_pass);
 
+    }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        ActivityManager activityManager = (ActivityManager)getApplicationContext()
+//                .getSystemService(Context.ACTIVITY_SERVICE);
+//
+//        activityManager.moveTaskToFront(getTaskId(),0);
+//    }
+
+    @Override
+    public void onAttachedToWindow() {
+//        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+        super.onAttachedToWindow();
     }
 
     public void login(View view) {
@@ -54,10 +80,11 @@ EditText etNis, etPass;
                 String hasil = response.body().getHasil();
 
                 if(hasil.equals("succes")){
-                    Bundle b = new Bundle();
-                    b.putString("nis",nis);
+                    getSharedPreferences("login",MODE_PRIVATE).edit().putString("nis",nis).commit();
+//                    Bundle b = new Bundle();
+//                    b.putString("nis",nis);
                     Intent i = new Intent(LoginActivity.this,TokenActivity.class);
-                    i.putExtras(b);
+//                    i.putExtras(b);
                     startActivity(i);
                     finish();
                 }else{
@@ -86,5 +113,10 @@ EditText etNis, etPass;
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }
